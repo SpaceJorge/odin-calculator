@@ -1,0 +1,143 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*align-items:center;*/
+    padding: 0%;
+    margin: 0%;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+#header{
+
+    background-color: red;
+    height: 75px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*flex: 1 1 auto;*/
+    padding-left: max(128px,20%);
+    padding-right: max(128px,20%);
+    margin-bottom: auto;
+}
+#footer{
+    background-color: red;
+    height: 50px;
+    margin-top: auto;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*flex: 1 1 auto;*/
+    padding-left: max(128px,20%);
+    padding-right: max(128px,20%);
+}
+
+/*calculator stuff*/
+
+#display{
+    grid-area: display;
+    background-color: azure;
+    padding: 1%;
+    font-size: large;
+    
+}
+#add{
+    grid-area: add;
+    background-color: rgb(255, 204, 77);
+}
+#substract{
+    grid-area: substract;
+    background-color: rgb(255, 204, 77);
+}
+#multiply{
+    grid-area: multiply;
+    background-color: rgb(255, 204, 77);}
+#divide{
+    grid-area: divide;
+    background-color: rgb(255, 204, 77);}
+
+#clear{
+    grid-area: clear;
+    background-color: red;
+    color: azure;
+}
+#backspace{
+    grid-area: backspace;
+    background-color: rgba(255, 0, 0, 0.459);
+    color: azure;
+}
+#equals{
+    grid-area: equals;
+    background-color: green;
+    color: azure;
+}
+.zero{
+    grid-area: zero;
+}
+.one{
+    grid-area: one;
+    
+}
+.two{
+    grid-area: two;
+}
+.three{
+    grid-area: three;
+}
+.four{
+    grid-area: four;
+}
+.five{
+    grid-area: five;
+}
+.six{
+    grid-area: six;
+}
+.seven{
+    grid-area: seven;
+}
+.eight{
+    grid-area: eight;
+}
+.nine{
+    grid-area: nine;
+}
+#dot{
+    grid-area: dot;
+}
+#container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    'display display display display'
+    'clear divide multiply substract'
+    'seven eight nine add'
+    'four five six backspace'
+    'one two three equals'
+    'zero zero dot equals';
+    gap: 2%;
+    background-color: grey;
+    padding: 3%;
+    margin:15%;
+    border-radius: 5% / 10%;
+
+    min-height: 200px;
+    /*height: 200px;*/
+    
+}
+.number{
+    border-radius: 50% 20% / 10% 40%;
+
+}
+.operator{
+    border-radius: 10% / 50%;
+}
+.special{
+    border-radius: 20% / 50%;
+}
