@@ -8,32 +8,53 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="header"> <h1>The Calculator Website</h1></div>
+    <div id="header"> 
+        <h1 class="item">The Annoying Drum Calculator Website</h1>
+        <h4 class="item">Add rhythm to math because math alone is boring.</h4>
+    </div>
     <div id="background">
         <div id="container">
             <div id="display">Uh, you turned me on!</div>
-            <button class="operator"id="add">+</button>
-            <button class="operator"id="subtract">-</button>
-            <button class="operator"id="multiply">x</button>
-            <button class="operator"id="divide">/</button>
-            <button class="special"id="equals">=</button>
-            <button class="special"id="clear">Clear All</button>
-            <button class="special"id="backspace">Backspace</button>
-            <button class="number zero"id="0">0</button>
-            <button class="number one"id="1">1</button>
-            <button class="number two"id="2">2</button>
-            <button class="number three"id="3">3</button>
-            <button class="number four"id="4">4</button>
-            <button class="number five"id="5">5</button>
-            <button class="number six"id="6">6</button>
-            <button class="number seven"id="7">7</button>
-            <button class="number eight"id="8">8</button>
-            <button class="number nine"id="9">9</button>
-            <button class="number"id="dot">.</button>
+            <button class="operator"id="add" data-key="107">+</button>
+            <button class="operator"id="subtract" data-key="109">-</button>
+            <button class="operator"id="multiply" data-key="106">x</button>
+            <button class="operator"id="divide" data-key="111">/</button>
+            <button class="special"id="equals" data-key="13">=</button>
+            <button class="special"id="clear" data-key="27">Clear All</button>
+            <button class="special"id="backspace" data-key="8">Backspace</button>
+            <button class="number zero"id="0" data-key="96">0</button>
+            <button class="number one"id="1" data-key="97">1</button>
+            <button class="number two"id="2" data-key="98">2</button>
+            <button class="number three"id="3" data-key="99">3</button>
+            <button class="number four"id="4" data-key="100">4</button>
+            <button class="number five"id="5" data-key="101">5</button>
+            <button class="number six"id="6" data-key="102">6</button>
+            <button class="number seven"id="7" data-key="103">7</button>
+            <button class="number eight"id="8" data-key="104">8</button>
+            <button class="number nine"id="9" data-key="105">9</button>
+            <button class="number"id="dot" data-key="110">.</button>
         </div>
     </div>
     <div id="footer"> <h3>All rights reserved unless they aren't.</h3></div>
 
+    <audio data-key="107" src="sounds/snare.wav"></audio>
+    <audio data-key="109" src="sounds/snare.wav"></audio>
+    <audio data-key="106" src="sounds/snare.wav"></audio>
+    <audio data-key="111" src="sounds/snare.wav"></audio>
+    <audio data-key="13" src="sounds/openhat.wav"></audio>
+    <audio data-key="27" src="sounds/tink.wav"></audio>
+    <audio data-key="8" src="sounds/clap.wav"></audio>
+    <audio data-key="96" src="sounds/kick.wav"></audio>
+    <audio data-key="97" src="sounds/kick.wav"></audio>
+    <audio data-key="98" src="sounds/kick.wav"></audio>
+    <audio data-key="99" src="sounds/kick.wav"></audio>
+    <audio data-key="100" src="sounds/kick.wav"></audio>
+    <audio data-key="101" src="sounds/kick.wav"></audio>
+    <audio data-key="102" src="sounds/kick.wav"></audio>
+    <audio data-key="103" src="sounds/kick.wav"></audio>
+    <audio data-key="104" src="sounds/kick.wav"></audio>
+    <audio data-key="105" src="sounds/kick.wav"></audio>
+    <audio data-key="110" src="sounds/hihat.wav"></audio>
 
 
     <script src="code.js"></script>  

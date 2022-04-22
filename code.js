@@ -100,6 +100,7 @@ function backspace(){
   }
 }
 
+
 /*
 const add = document.querySelector("#add");
 const subtract = document.querySelector("#subtract");
@@ -116,8 +117,15 @@ let oper = "";
 
 
 for(let i = 0; i< buttons.length; i++){
-  buttons.item(i).addEventListener("click",()=> {
+  buttons.item(i).addEventListener("click",()=>{
+    //audio and style modifiers
+    const dataKey = buttons.item(i).getAttribute("data-key");
+    const audio = document.querySelector(`audio[data-key="${dataKey}"]`);
+    audio.currentTime = 0;
+    audio.play();
+    buttons.item(i).classList.add("touched");
     
+    //calculator functionality
     cleanDisplay(buttons.item(i).id);
     
     if ((text == "")&&(inputOne == null)) {
@@ -202,3 +210,104 @@ for(let i = 0; i< buttons.length; i++){
   });
 
 }
+
+window.addEventListener("keydown", function(e){
+  //audio and style modifiers
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const button = this.document.querySelector(`button[data-key="${e.keyCode}"]`)
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+  button.classList.add("touched");
+
+  //calculator functionality
+  cleanDisplay(button.id);
+    
+  if ((text == "")&&(inputOne == null)) {
+    switch (button.id){
+      case "multiply":
+      case "divide":
+      case "add":
+        display.textContent = "First you need to type a number or minus sign.";
+        break;
+      case "equals":
+        display.textContent = "What does nothing really equal to? I think we need a philosophy textbook.";
+        break;
+      case "backspace":
+        display.textContent = "";
+        break;
+      case "clear":
+        clearData();
+        break;
+      default:
+        text = button.textContent;
+        display.textContent = text;
+        break;
+    }
+    
+  }else if (button.id == "clear"){
+    clearData();
+  }else if (button.id == "backspace"){
+    backspace();
+  }else if (button.id == "equals"){
+    
+    if ((oper != "")&&(text != "")){
+      display.textContent = operate(inputOne,text,oper);
+      if (display.textContent == "Can't divide by 0!"){
+        clearData();
+        display.textContent ="Can't divide by 0!";
+      } else if (display.textContent == "Error in inserted data."){
+        clearData();
+        display.textContent ="Error in inserted data.";
+      } else{
+        inputOne = display.textContent;
+        oper = "";
+        text= "";
+      }
+    }
+
+  }else{
+    switch (button.id){
+      case "multiply":
+      case "divide":
+      case "add":
+      case "subtract":
+        if (inputOne == null){
+          inputOne = text;
+          oper = button.textContent;
+          display.textContent = oper;
+          
+        }else if (text != ""){
+          inputOne = operate(inputOne,text,oper);
+          if (inputOne == "Can't divide by 0!"){
+            clearData();
+            display.textContent = "Can't divide by 0!";
+          }else if (display.textContent == "Error in inserted data."){
+            clearData();
+            display.textContent ="Error in inserted data.";
+          }else{
+            oper = button.textContent;
+            display.textContent = inputOne + oper;
+            text = "";
+          }  
+        }else{
+          oper = button.textContent;
+          display.textContent = oper;
+        }
+        break;
+      default:
+        text = display.textContent + button.textContent;
+        display.textContent = text;
+        break;
+    }
+    
+  }
+});
+
+function removeTransition(e){
+  if (e.propertyName !== "transform") return; 
+  this.classList.remove("touched");
+}
+
+const keys = document.querySelectorAll("button");
+keys.forEach(key => key.addEventListener("transitionend", removeTransition));

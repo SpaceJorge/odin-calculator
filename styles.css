@@ -1,42 +1,69 @@
 body{
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content:space-between;
     /*align-items:center;*/
     padding: 0%;
     margin: 0%;
     
     font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    box-sizing: border-box;
+    box-sizing:border-box;
     min-height: 100vh;
+
+    background-image: url("images/numbers.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    /*background-image: repeating-radial-gradient(rgb(156, 0, 0), rgb(255, 255, 255) 10%, rgb(0, 65, 77) 15%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: 100% 100%;*/
 }
 
 #header{
 
     background-color: red;
-    height: 75px;
+    /*height: 8%;*/
     color: white;
-    display: flex;
-    flex-direction: row;
+    /*display: flex;*/
+    /*flex-direction: row;*/
     align-items: center;
     justify-content: center;
     /*flex: 1 1 auto;*/
-    padding-left: max(128px,20%);
-    padding-right: max(128px,20%);
-    margin-bottom: auto;
+    padding-left: 10%;
+    padding-right: 10%;
+    /*margin-bottom: auto;*/
+    
+    
 }
+#header h1{
+    display:flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+#header h4{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+
 #footer{
     background-color: red;
     height: 50px;
-    margin-top: auto;
+    /*margin-top: auto;*/
     color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     /*flex: 1 1 auto;*/
-    padding-left: max(128px,20%);
-    padding-right: max(128px,20%);
+    /*padding-left: max(64px,10%);
+    padding-right: max(64px,10%);*/
 }
 
 /*calculator stuff*/
@@ -46,7 +73,8 @@ body{
     background-color: azure;
     padding: 1%;
     font-size: large;
-    
+    min-height: max(20px,fitcontent);
+    text-align: center;
 }
 #add{
     grid-area: add;
@@ -113,6 +141,22 @@ body{
 #dot{
     grid-area: dot;
 }
+
+button{
+    border:2% solid black;
+    /*border-radius:5px;*/
+    transition: all 0.07s;
+    font-size: 120%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+    /*text-shadow: 0 0 1px rgb(0, 0, 0);*/
+}
+
+.touched{
+    transform: scale(1.1);
+    border-color: azure;
+    box-shadow: 0 0 10px azure;
+}
+
 #container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -126,13 +170,15 @@ body{
     gap: 2%;
     background-color: grey;
     padding: 3%;
-    margin:15%;
+    margin-top:min(15%,150px);
+    margin-bottom:min(15%,150px);
+    margin-left: 30%;
+    margin-right: 30%;
     border-radius: 5% / 10%;
-
+    /*max-width: 630px;*/
     min-height: 200px;
-    
-    /*height: 200px;*/
-    
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    flex:0 1 auto;
 }
 .number{
     border-radius: 50% 20% / 10% 40%;
@@ -144,3 +190,4 @@ body{
 .special{
     border-radius: 20% / 50%;
 }
+
