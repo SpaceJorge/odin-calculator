@@ -77,12 +77,11 @@ function cleanDisplay(id){
 
   if ((displayText == "Uh, you turned me on!")|| (displayText == "Can't divide by 0!")){
     display.textContent = "";
-  } else if ((inputOne != null) && ( (lastChar == "/")||(lastChar == "x")||(lastChar == "-")||(lastChar == "+"))&&(id != "backspace")&&(id != "equals")){
+  } else if ((inputOne != null) && ( (lastChar == "/")||(lastChar == "x")||(lastChar == "-")||(lastChar == "+") )&&(id != "backspace")&&(id != "equals")){
     text = "";
     display.textContent = "";
   }else if (displayText != text){
-    text = "";
-    display.textContent = "";
+    clearData();
   }
 }
 function clearData(){
@@ -90,11 +89,16 @@ function clearData(){
   display.textContent = "";
   inputOne = null;
   oper = "";
-  dot.disabled = false;
+  dotButton.disabled = false;
+
 }
 function backspace(){
   if (text != ""){
     text = display.textContent;
+    if (text.charAt(text.length-1) == "."){
+      dotButton.disabled = false;
+    }
+
     text = text.slice(0,text.length-1);
     display.textContent = text;
   }
@@ -147,6 +151,9 @@ for(let i = 0; i< buttons.length; i++){
         default:
           text = buttons.item(i).textContent;
           display.textContent = text;
+          if (buttons.item(i).textContent == ".") {
+            buttons.item(i).disabled = true;
+          }
           break;
       }
       
@@ -164,10 +171,13 @@ for(let i = 0; i< buttons.length; i++){
         } else if (display.textContent == "Error in inserted data."){
           clearData();
           display.textContent ="Error in inserted data.";
-        } else{
+        } else {
           inputOne = display.textContent;
           oper = "";
           text= "";
+          if (dotButton.disabled == true) {
+            dotButton.disabled = false;
+          }
         }
       }
 
@@ -181,6 +191,9 @@ for(let i = 0; i< buttons.length; i++){
             inputOne = text;
             oper = buttons.item(i).textContent;
             display.textContent = oper;
+            if (dotButton.disabled == true) {
+              dotButton.disabled = false;
+            }
             
           }else if (text != ""){
             inputOne = operate(inputOne,text,oper);
@@ -194,15 +207,27 @@ for(let i = 0; i< buttons.length; i++){
               oper = buttons.item(i).textContent;
               display.textContent = inputOne + oper;
               text = "";
+              if (dotButton.disabled == true) {
+                dotButton.disabled = false;
+              }
             }  
           }else{
             oper = buttons.item(i).textContent;
             display.textContent = oper;
+            if (dotButton.disabled == true) {
+              dotButton.disabled = false;
+            }
+          }
+          if (dotButton.disabled == true) {
+            dotButton.disabled = false;
           }
           break;
         default:
           text = display.textContent + buttons.item(i).textContent;
           display.textContent = text;
+          if (buttons.item(i).textContent == ".") {
+            buttons.item(i).disabled = true;
+          }
           break;
       }
       
@@ -242,6 +267,9 @@ window.addEventListener("keydown", function(e){
       default:
         text = button.textContent;
         display.textContent = text;
+        if (buttons.item(i).textContent == ".") {
+          buttons.item(i).disabled = true;
+        }
         break;
     }
     
@@ -263,6 +291,9 @@ window.addEventListener("keydown", function(e){
         inputOne = display.textContent;
         oper = "";
         text= "";
+        if (dotButton.disabled == true) {
+          dotButton.disabled = false;
+        }
       }
     }
 
@@ -276,7 +307,9 @@ window.addEventListener("keydown", function(e){
           inputOne = text;
           oper = button.textContent;
           display.textContent = oper;
-          
+          if (dotButton.disabled == true) {
+            dotButton.disabled = false;
+          }
         }else if (text != ""){
           inputOne = operate(inputOne,text,oper);
           if (inputOne == "Can't divide by 0!"){
@@ -289,15 +322,24 @@ window.addEventListener("keydown", function(e){
             oper = button.textContent;
             display.textContent = inputOne + oper;
             text = "";
+            if (dotButton.disabled == true) {
+              dotButton.disabled = false;
+            }
           }  
         }else{
           oper = button.textContent;
           display.textContent = oper;
+          if (dotButton.disabled == true) {
+            dotButton.disabled = false;
+          }
         }
         break;
       default:
         text = display.textContent + button.textContent;
         display.textContent = text;
+        if (buttons.item(i).textContent == ".") {
+          buttons.item(i).disabled = true;
+        }
         break;
     }
     
